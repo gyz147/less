@@ -1,0 +1,81 @@
+//示例一：普通混合，没有参数
+.gyz{
+	font-weight: bold;
+	text-align: center;
+}
+
+#d1{
+	text-decoration: underline;
+	.gyz;//引用另一个class
+}
+
+#d2{
+	text-decoration: line-through;
+	.gyz;
+}
+
+//示例二：带参混合
+.xyq(@color){
+	color: @color;
+}
+
+#d1{
+	.xyq(#f00);
+}
+
+#d2{
+	.xyq(#00f);
+}
+
+//示例三：mixin名称也可以以#开头
+#hello(@size){
+	font-size: @size;
+}
+
+.c1{
+	#hello(30px);
+}
+
+//示例4：多个参数,默认值,缺省传参
+.setColumns(@columns,@column-fill:balance,@column-gap,@column-rule:1px solid red){
+	-webkit-columns: @columns;
+	-moz-columns: @columns;
+	-o-columns: @columns;
+	columns: @columns;
+	-webkit-column-fill: @column-fill;
+	-moz-column-fill: @column-fill;
+	-o-column-fill:@column-fill ;
+	column-fill: @column-fill;
+	-webkit-column-gap:@column-gap;
+	-moz-column-gap: @column-gap;
+	-o-column-gap: @column-gap;
+	column-gap: @column-gap;
+	-webkit-column-rule: @column-rule;
+	-moz-column-rule: @column-rule;
+	-o-column-rule: @column-rule;
+	column-rule: @column-rule;
+}
+#d3{
+	width: 400px;
+	.setColumns(100px 5,@column-gap:5px);
+
+}
+
+//示例5：导引表达式，使用when进行判断
+.hello(@font-size) when(@font-size<20){
+	font-size:unit(@font-size,px);
+	color:red;
+}
+
+.hello(@font-size) when(@font-size>=20){
+	font-size:30px;
+	color:blue;
+}
+
+.hello(@font-size){//总是会匹配
+	background-color: #ccc;
+}
+
+.c3{
+	.hello(50)
+}

@@ -1,0 +1,67 @@
+//简单变量
+@width: 100px;
+@height: 100px;
+
+div {
+    width: @width;
+    height: @height;
+    border: 1px solid #ccc;
+}
+
+p {
+    width: @width;
+    height: @height;
+}
+
+//选择器变量
+@select1: d1;
+@select2: #d2;
+
+#@{select1} {
+    color: red;
+}
+
+.@{select1} {
+    color: yellow;
+}
+
+@{select2} {
+    background-color: #666;
+}
+
+//url变量
+@imgPath:"../images";
+.gyz{
+	background-image: url('@{imgPath}/p1.jpg');
+}
+
+//属性变量
+@prop:color;
+.c1{
+	@{prop}: yellow;
+}
+.c2{
+	background-@{prop}: blue;
+}
+
+//变量的嵌套
+@aaa:50px;
+@bbb:aaa;
+@ccc:@aaa;
+.c3{
+	// font-size: @@bbb;
+	font-size: @ccc;
+}
+
+//延迟加载，变量支持延迟加载,即可在定义变量前使用
+.c4{
+	text-decoration: @ddd;
+	@ddd:line-through;//重新为变量赋值
+}
+@ddd:underline;
+
+/**
+ * 总结：
+ * 1.除了简单变量之外，其它变量在调用时都需要使用插值形式{}
+ * 2.建议先声明再使用，同时建议将所有变量声明放最上面
+ */

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>基本用法</title>
+	<!-- 传统css
+	<style type="text/css">
+		#gyz{
+			width: 200px;
+			height: 200px;
+			border: 1px solid red;
+		}
+		#xyq{
+			width: 100px;
+			height: 100px;
+			border: 1px dashed red;
+		}
+	</style> -->
+	
+	<!-- 方式一：直接使用less -->
+	<!-- <style type="text/less">
+		@color:red;
+		#gyz{
+			width: 200px;
+			height: 200px;
+			border: 1px solid @color;
+		}
+		#xyq{
+			width: 100px;
+			height: 100px;
+			border: 1px dashed @color;
+		}
+	</style> -->
+
+	<!-- 方式二：外部引入less文件 -->
+	<link rel="stylesheet/less" href="css/01.less">
+	<script src="js/less.min.js"></script>
+</head>
+<body>
+	<div id="gyz"></div>
+	<br>
+	<div id="xyq"></div>
+</body>
+</html>

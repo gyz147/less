@@ -1,0 +1,53 @@
+//unit()函数
+.c1{
+	font-size: unit(20,px);
+	//font-size: unit(20px,rem);
+	//font-size: unit(20px);
+}
+
+//conver()函数
+.c2{
+	// animation-delay: convert(3000ms,s);
+	animation-delay: convert(2s,ms);
+	width: convert(40mm,px);//新版好像不能转，旧版可以
+	transform: rotate(convert(0.5rad,deg));
+}
+
+//color()函数
+.c3{
+	color:color("blue");
+}
+
+//darken(),lighten(),mix()
+.c4{
+	// background-color: lighten(red,10%);
+	background-color: mix(red,yellow);
+}
+
+//data-uri()函数
+.a1{
+	//转换成字节数据后即时将图片数据删除也可以访问，图片不能超过32K
+	background-image: data-uri("../images/baidu.jpg");
+}
+
+//default()函数
+.gyz(1){
+	font-size: 1rem;
+}
+.gyz(2){
+	font-size: 2rem;
+}
+// .gyz(@size)when(default()){//如果传入值不是1或2，则认为是自定义的默认值，执行{}中的操作
+// 	font-size: unit(@size,px)
+// }
+// .a2{
+// 	.gyz(1);
+// }
+
+//not()函数
+.gyz(@size)when not(default()){//如果传入值不是1或2，则认为是自定义的默认值，执行{}中的操作
+	font-size: unit(@size,px)
+}
+.a2{
+	.gyz(2);
+}
